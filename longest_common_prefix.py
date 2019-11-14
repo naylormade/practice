@@ -1,31 +1,16 @@
 def longestCommonPrefix(strs) -> str:
-    #ppref = ""
+    if not strs: return ""
+    if len(strs) == 1: return strs[0]
     
-    if not strs: return ""  #empty string
-    if len(strs) == 1: return strs[0]  #only 1 given string
-    if strs: ppref = strs[0]  #initialize first word
-    if ppref == "":  #if given an empty string but empty
-        return ""
+    strs.sort()
+    p = ""
+    for x, y in zip(strs[0], strs[-1]):
+        if x == y: 
+            p += x
+        else:
+            break
+    print(f'p:{p}')
+    return p
 
-    ans = ""
-    for word in strs[1:]:
-        indexes = 0
-        for letter in word:
-            if letter == ppref[indexes]:
-                ans += letter
-                indexes += 1
-            else:
-                if ans:
-                    ans = ppref[:indexes]
-                    print(f'ans:{ans}')
-                    return ans
-                print("No match on 2nd word so ending")
-                return ""
-    if ans:
-        print(f'ans: {ans}')
-        return ans
-    else:
-        return ""
-    
-
-longestCommonPrefix(["a","a","a"])
+longestCommonPrefix(["aaa","aa","aaa"])
+longestCommonPrefix(["a","a","b"])
