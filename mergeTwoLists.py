@@ -6,25 +6,19 @@ class ListNode:
 
 def mergeTwoLists(l1: ListNode, l2: ListNode) -> ListNode:
     listy = []
-    head1 = l1.val
-    head2 = l2.val
-    tail1 = head1
-    tail2 = head2
-    count = 1
-
-    while l1.next > 0:
+    while l1:
         listy.append(l1.val)
-    while l2.next > 0:
+        l1 = l1.next
+    while l2:
         listy.append(l2.val)
+        l2 = l2.next
+    if not listy:
+        return
     listy.sort()
-    print(listy)
-    # while count < max(len(l1), len(l2)):
-    #     print(head)
-    #     tail1.next = l1.next
-    #     tail2.next = l2.next
-    #     if 
-    #     tail = tail.next
-    #     count += 1
-    return listy
+    #print(listy)
+    listnodes = [ListNode(x) for x in listy[::-1]]
+    for i in range(1, len(listnodes)):
+        listnodes[i].next = listnodes[i - 1]
+    return listnodes[-1]
 
 mergeTwoLists([1,2,4],[1,3,4])
