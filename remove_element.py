@@ -1,5 +1,4 @@
 def removeElement(nums, val: int) -> int:
-    count = 0
     while val in nums:
         nums.remove(val)
     print(nums)
