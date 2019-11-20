@@ -1,6 +1,7 @@
 def reverse( x: int) -> int:
-    ans = ""
+
     if len(str(x)) == 1: return x
+
     ans = ''.join(list(reversed(str(x))))
     while ans[0] == str(0):
         ans = ''.join(ans[1:])
